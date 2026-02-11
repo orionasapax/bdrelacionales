@@ -1,2 +1,2 @@
-# bdrelacionales
-terracrack relacional
+# Isaac Mohinder Valdez Santos
+4AMP
