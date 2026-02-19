@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-02-2026 a las 16:30:29
+-- Tiempo de generación: 19-02-2026 a las 16:08:25
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -34,6 +34,17 @@ CREATE TABLE `atencion` (
   `fecha` date NOT NULL,
   `nota` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `atencion`
+--
+
+INSERT INTO `atencion` (`id_atencion`, `id_reserva`, `id_empleado`, `fecha`, `nota`) VALUES
+(1, 8, 5, '2025-08-20', 'disfruta'),
+(2, 4, 2, '2025-08-20', 'disfruta'),
+(3, 3, 4, '2025-08-20', 'disfruta'),
+(4, 1, 3, '2025-08-25', 'no disfrutes'),
+(5, 7, 1, '2026-01-06', 'disfruta ! ! ! ! ! ! ! ! 1 1\r\n');
 
 -- --------------------------------------------------------
 
@@ -146,9 +157,20 @@ CREATE TABLE `pago` (
   `fecha_pago` date NOT NULL,
   `monto` double NOT NULL,
   `metodo` varchar(100) NOT NULL,
-  `referencia` varchar(100) NOT NULL,
+  `referencia` int(11) NOT NULL,
   `estado_pago` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `pago`
+--
+
+INSERT INTO `pago` (`id_pago`, `id_reserva`, `fecha_pago`, `monto`, `metodo`, `referencia`, `estado_pago`) VALUES
+(1, 9, '2025-12-01', 0, 'Efectivo', 1234, 'Pagado'),
+(2, 2, '2025-12-01', 1390, 'Transferencia', 2453, 'Vigente'),
+(3, 1, '2025-12-01', 5600, 'Transferencia', 7466, 'Vigente'),
+(4, 9, '2025-12-01', 2000, 'Transferencia', 7667, 'Pagado'),
+(5, 5, '2025-12-01', 10000, 'Efectivo', 5768, 'Vigente');
 
 -- --------------------------------------------------------
 
@@ -196,6 +218,23 @@ CREATE TABLE `resserva_servicio` (
   `precio_unitario` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `resserva_servicio`
+--
+
+INSERT INTO `resserva_servicio` (`id_reserva`, `id_servicio`, `cantidad`, `precio_unitario`) VALUES
+(10, 3, '2', '1000'),
+(3, 1, '1', '100'),
+(9, 5, '3', '677'),
+(1, 3, '5', '159'),
+(4, 2, '1', '300'),
+(4, 4, '4', '444'),
+(8, 5, '1', '500'),
+(6, 2, '1', '200'),
+(7, 1, '3', '199'),
+(3, 3, '2', '129'),
+(9, 5, '10', '400\r\n');
+
 -- --------------------------------------------------------
 
 --
@@ -207,6 +246,17 @@ CREATE TABLE `servicio` (
   `nombre` varchar(100) NOT NULL,
   `precio_base` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `servicio`
+--
+
+INSERT INTO `servicio` (`id_servicio`, `nombre`, `precio_base`) VALUES
+(1, 'Baño', '$10'),
+(2, 'Limpieza de habitación', '$150'),
+(3, 'Room Service', '$199'),
+(4, 'Transporte', '$99'),
+(5, 'Eventos', '$500');
 
 --
 -- Índices para tablas volcadas
@@ -283,7 +333,7 @@ ALTER TABLE `servicio`
 -- AUTO_INCREMENT de la tabla `atencion`
 --
 ALTER TABLE `atencion`
-  MODIFY `id_atencion` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_atencion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `cliente`
@@ -313,7 +363,7 @@ ALTER TABLE `hotel`
 -- AUTO_INCREMENT de la tabla `pago`
 --
 ALTER TABLE `pago`
-  MODIFY `id_pago` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pago` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `reserva`
@@ -325,7 +375,7 @@ ALTER TABLE `reserva`
 -- AUTO_INCREMENT de la tabla `servicio`
 --
 ALTER TABLE `servicio`
-  MODIFY `id_servicio` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_servicio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Restricciones para tablas volcadas
