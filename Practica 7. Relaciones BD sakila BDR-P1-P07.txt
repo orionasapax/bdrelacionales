@@ -1,0 +1,70 @@
+Relaciones foraneas (FK)
+
+film:
+(PK) film_id
+(FK) lenguage_id: una pelicula tiene muchos lenguajes
+(FK) original_lenguage_id: una pelicula tiene un lenguaje original
+
+
+film_actor:
+(FK) actor_id: un actor tiene muchas peliculas
+(FK) film_id: una pelicula tiene muchos actores
+
+actor:
+(PK) actor_id
+
+film_category
+(FK) film_id: una pelicula tiene muchas categorias
+(FK) category_id: una categoria tienen muchas peliculas
+
+category:
+(PK) category_id
+
+
+store:
+(PK) store_id
+(FK) manager_staff_id: una tienda tiene un manager
+(FK) address_id: una tienda tiene una direccion
+
+rental:
+(PK) rental_id
+(FK) inventory_id: un alquiler tiene un inventario
+(FK) customer_id: un cliente tiene un alquiler
+(FK) staff_id: un staff tiene un alquiler
+
+lenguage:
+(PK) lenguage_id
+
+inventory:
+(PK) inventory_id
+(FK) film_id: un inventario tiene muchas peliculas
+(FK) store_id: una tienda tiene un inventario
+
+address:
+(PK) address_id
+(FK) city_id: una ciudad tiene muchas direccion
+
+city:
+(PK) city_id
+(FK) country_id: un país tiene muchas ciudades
+
+country:
+(PK) country_id
+
+payment:
+(PK) payment_id
+(FK) customer_id: un cliente tiene muchos pagos
+(FK) staff_id: un staff tiene muchos pagos
+(FK) rental_id: un alquiler tiene muchos pagos
+
+customer:
+(PK) customer_id
+(FK) store_id: una tienda tiene muchos clientes
+(FK) address_id: un cliente tiene una direccion
+
+staff:
+(PK) staff_id
+(FK) address_id: un staff tiene muchas direcciones
+(FK) store_id: una tienda tiene un staff
+
+
